@@ -55,6 +55,7 @@
     <script>
         window.onload = function() {
             var links = document.querySelectorAll('.links a');
+            var spans = document.querySelectorAll('td span');
             var currentDomain = window.location.hostname;
             var modifiedDomain = currentDomain.split('.').slice(1).join('.'); // Remove the first segment of the domain
         
@@ -62,6 +63,12 @@
                 var href = link.getAttribute('href');
                 var newHref = href.replace('glueops.rocks', modifiedDomain);
                 link.setAttribute('href', newHref);
+            });
+
+            spans.forEach(function(span) {
+                var text = span.textContent;
+                var newText = text.replace('glueops.rocks', modifiedDomain);
+                span.textContent = newText;
             });
         };
     </script>
