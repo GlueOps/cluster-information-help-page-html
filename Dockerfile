@@ -1,5 +1,5 @@
 # Use the Nginx image from Docker Hub
-FROM nginx:1.26.2-alpine@sha256:d4d72ee8e6d028c5ad939454164d3645be2d38afb5c352277926a48e24abf4fa
+FROM nginx:1.27.2-alpine@sha256:2140dad235c130ac861018a4e13a6bc8aea3a35f3a40e20c1b060d51a7efd250
 
 # Copy the HTML file to the Nginx document root
 COPY index.html /usr/share/nginx/html
