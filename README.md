@@ -1,73 +1,117 @@
-# Welcome to your Lovable project
+# Cluster Information Help Page
 
-## Project info
+> **Note**: This project was originally created using [Loveable](https://lovable.dev) but is now developed locally.
 
-**URL**: https://lovable.dev/projects/cb1ba23c-39b4-4f26-af04-2302b0187768
+## Local Development
 
-## How can I edit this code?
+This project uses modern web technologies and can be developed locally using your preferred IDE.
 
-There are several ways of editing your application.
+### Prerequisites
 
-**Use Lovable**
+You'll need one of the following package managers installed:
+- [Bun](https://bun.sh/) (recommended - faster performance)
+- [Node.js & npm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/cb1ba23c-39b4-4f26-af04-2302b0187768) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Getting Started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd cluster-information-help-page-html
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies (using Bun - recommended)
+bun install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Or using npm
+npm install
+
+# Start the development server
+bun run dev
+# Or using npm
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The development server will start with auto-reloading and hot module replacement. Open your browser to see the application.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Available Scripts
 
-**Use GitHub Codespaces**
+- `bun run dev` / `npm run dev` - Start development server
+- `bun run build` / `npm run build` - Build for production
+- `bun run build:dev` / `npm run build:dev` - Build for development
+- `bun run lint` / `npm run lint` - Run ESLint
+- `bun run preview` / `npm run preview` - Preview production build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Docker Development
 
-## What technologies are used for this project?
+You can also run the application using Docker:
+
+```sh
+# Build and run using Docker Compose
+docker-compose up --build
+
+# Or build and run manually
+docker build -t cluster-info-app .
+docker run -p 80:80 cluster-info-app
+```
+
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React** - Component-based UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Modern React component library
+- **Radix UI** - Accessible component primitives
+- **React Router** - Client-side routing
+- **React Hook Form** - Form handling
+- **Zod** - Schema validation
+- **Bun** - Fast JavaScript runtime and package manager
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/cb1ba23c-39b4-4f26-af04-2302b0187768) and click on Share -> Publish.
+```
+src/
+├── components/       # Reusable React components
+│   ├── ui/          # shadcn/ui components
+│   └── ClusterInfo.tsx
+├── hooks/           # Custom React hooks
+├── lib/             # Utility functions
+└── pages/           # Page components
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+### Docker Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The project includes Docker configuration for containerized deployment:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. **Build the Docker image:**
+   ```sh
+   docker build -t cluster-info-app .
+   ```
+
+2. **Run the container:**
+   ```sh
+   docker run -p 80:80 cluster-info-app
+   ```
+
+3. **Using Docker Compose:**
+   ```sh
+   docker-compose up --build
+   ```
+
+### Static Build Deployment
+
+For static hosting (Netlify, Vercel, GitHub Pages, etc.):
+
+```sh
+# Build the project
+bun run build
+
+# The built files will be in the 'dist' directory
+# Deploy the contents of 'dist' to your hosting provider
+```
