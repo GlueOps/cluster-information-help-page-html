@@ -11,6 +11,9 @@ const ClusterInfo = () => {
   const vaultUrl = `https://vault.${captainDomain}`;
 
   useEffect(() => {
+    // Set the document title to the CAPTAIN_DOMAIN
+    document.title = "GlueOps - " + captainDomain;
+
     // Add fade-in animation to elements when they come into view
     const observerOptions = {
       threshold: 0.1,
@@ -33,7 +36,7 @@ const ClusterInfo = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [captainDomain]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
