@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlueOps Platform Cluster Information</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .support-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .support-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .support-info {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-info strong {
+            color: #4c51bf;
+        }
+
+        .phone-link {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .phone-link:hover {
+            color: #2c5aa0;
+            text-decoration: underline;
+        }
+
+        .docs-link {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .docs-link:hover {
+            color: #2c5aa0;
+            text-decoration: underline;
+        }
+
+        .info-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .info-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+
+        tr:hover td {
+            background-color: #f7fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .resource-label {
+            font-weight: 600;
+            color: #4a5568;
+            min-width: 200px;
+        }
+
+        .resource-link {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .resource-link:hover {
+            background-color: #ebf8ff;
+            color: #2c5aa0;
+            text-decoration: underline;
+        }
+
+        .description {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid #e2e8f0;
+                margin-bottom: 1rem;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding: 1rem;
+                text-align: right;
+            }
+
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                width: 45%;
+                text-align: left;
+                font-weight: 600;
+                color: #4a5568;
+            }
+
+            .resource-link, .description {
+                margin-left: 50%;
+                text-align: left;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cluster Information</h1>
+    </div>
+
+    <div class="container">
+        <div class="support-section fade-in">
+            <div class="support-info">
+                <strong>Emergency 24/7 Phone Support:</strong> 
+                <a href="tel:+1-877-4583-677" class="phone-link">+1-877-GLUE-OPS</a>
+            </div>
+            <div>
+                <a href="https://docs.glueops.dev" class="docs-link">GlueOps Documentation</a>
+            </div>
+        </div>
+
+        <div class="info-table fade-in">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resource/Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="resource-label" data-label="Resource/Link">Captain Domain:</td>
+                        <td class="description" data-label="Description">
+                            <span class="resource-link">CAPTAIN_DOMAIN_PLACEHOLDER</span><br>
+                            You will find this referenced through out the docs. This is specific to a cluster
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="resource-label" data-label="Resource/Link">Applications Domain:</td>
+                        <td class="description" data-label="Description">
+                            <span class="resource-link">apps.CAPTAIN_DOMAIN_PLACEHOLDER</span><br>
+                            When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="resource-label" data-label="Resource/Link">Deployments:</td>
+                        <td class="description" data-label="Description">
+                            <a href="https://argocd.CAPTAIN_DOMAIN_PLACEHOLDER" class="resource-link">ArgoCD</a><br>
+                            View all your application deployments
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="resource-label" data-label="Resource/Link">Metrics and Monitoring:</td>
+                        <td class="description" data-label="Description">
+                            <a href="https://grafana.CAPTAIN_DOMAIN_PLACEHOLDER" class="resource-link">Grafana</a><br>
+                            View all your application deployment metrics (e.g. CPU, Memory, etc.)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="resource-label" data-label="Resource/Link">Secrets Management:</td>
+                        <td class="description" data-label="Description">
+                            <a href="https://vault.CAPTAIN_DOMAIN_PLACEHOLDER" class="resource-link">Vault</a><br>
+                            Manage the secrets consumed by your applications.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interaction effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all table rows
+            document.querySelectorAll('tr').forEach(row => {
+                observer.observe(row);
+            });
+
+            // Add click animation to links
+            document.querySelectorAll('.resource-link, .phone-link, .docs-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        this.classList.add('pulse');
+                        setTimeout(() => {
+                            this.classList.remove('pulse');
+                        }, 1000);
+                    }
+                });
+            });
+
+            // Add ripple effect to table rows
+            document.querySelectorAll('tr').forEach(row => {
+                row.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(99, 126, 234, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Add smooth hover effects
+            document.querySelectorAll('.support-section, .info-table').forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
