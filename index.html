@@ -1,130 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>GlueOps Platform Cluster Information</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html-page-one-shot</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            overflow: auto;
-        }
+    <meta property="og:title" content="html-page-one-shot" />
+    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-        }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
 
-        header h1 {
-            text-align: center;
-            margin: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        table th {
-            background-color: #f2f2f2;
-        }
-
-        table td a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        table td a:hover {
-            color: #2980b9;
-        }
-    </style>
-    <script>
-        window.onload = function() {
-            var links = document.querySelectorAll('table a');
-            var spans = document.querySelectorAll('td span');
-            var currentDomain = window.location.hostname;
-            var modifiedDomain = currentDomain.split('.').slice(1).join('.'); // Remove the first segment of the domain
-        
-            links.forEach(function(link) {
-                var href = link.getAttribute('href');
-                var newHref = href.replace('glueops.rocks', modifiedDomain);
-                link.setAttribute('href', newHref);
-            });
-
-            spans.forEach(function(span) {
-                var text = span.textContent;
-                var newText = text.replace('glueops.rocks', modifiedDomain);
-                span.textContent = newText;
-            });
-        };
-    </script>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Cluster Information</h1>
-        </div>
-    </header>
-    <div class="container">
-        <div class="contact">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <p><strong>Emergency 24/7 Phone Support:</strong> <a href="tel:+1877GLUEOPS">+1-877-GLUE-OPS</a></p>
-            <p><a href="https://glueops.dev/docs/introduction">GlueOps Documentation</a></p>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Resource/Link</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Captain Domain:</td>
-                    <td><span>glueops.rocks</span></td>
-                    <td>You will find this referenced through out the docs. This is specific to a cluster</td>
-                </tr>
-                <tr>
-                    <td>Applications Domain:</td>
-                    <td><span>apps.glueops.rocks</span></td>
-                    <td>When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL</td>
-                </tr>
-                <tr>
-                    <td>Deployments:</td>
-                    <td><a href="https://argocd.glueops.rocks/login">ArgoCD</a></td>
-                    <td>View all your application deployments</td>
-                </tr>
-                <tr>
-                    <td>Metrics and Monitoring:</td>
-                    <td><a href="https://grafana.glueops.rocks">Grafana</a></td>
-                    <td>View all your application deployment metrics (e.g. CPU, Memory, etc.)</td>
-                </tr>
-                <tr>
-                    <td>Secrets Management:</td>
-                    <td><a href="https://vault.glueops.rocks">Vault</a></td>
-                    <td>Manage the secrets consumed by your applications.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
