@@ -110,11 +110,11 @@ function App() {
 
           <div className="overflow-x-none">
             <Table>
-              <TableHeader className="bg-[#084218] text-white">
+              <TableHeader>
                 <TableRow>
-                  <TableHead className="px-8 py-8 text-left text-xl font-bold">Resource Type</TableHead>
-                  <TableHead className="px-8 py-8 text-left text-xl font-bold">Description</TableHead>
-                  <TableHead className="px-8 py-8 text-left text-xl font-bold">Value</TableHead>
+                  <TableHead className="px-8 py-8 text-left text-xl font-bold bg-[#084218] text-white">Resource Type</TableHead>
+                  <TableHead className="px-8 py-8 text-left text-xl font-bold bg-[#084218] text-white">Description</TableHead>
+                  <TableHead className="px-8 py-8 text-left text-xl font-bold bg-[#084218] text-white">Value</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody className="divide-y divide-[#F4C624]/20">
