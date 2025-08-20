@@ -41,6 +41,9 @@ jobs:
             type=ref,event=tag,prefix=
             type=sha,format=short,prefix=
             type=sha,format=long,prefix=
+            type=semver,pattern=v{{version}}
+            type=semver,pattern=v{{major}}.{{minor}}
+            type=semver,pattern=v{{major}}
 
       - name: Build and push Docker image
         id: build-and-push
