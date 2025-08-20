@@ -15,6 +15,13 @@ jobs:
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
+      id: tag_version
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         TAG_PREFIX: v
+
+    - name: Create a GitHub release
+      uses: ncipollo/release-action@v1
+      with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
