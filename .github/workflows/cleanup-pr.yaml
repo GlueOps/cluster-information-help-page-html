@@ -11,4 +11,4 @@ jobs:
       - name: Delete image
         uses: dataaxiom/ghcr-cleanup-action@v1
         with:
-          delete-tags: renovate-*
+          delete-tags: renovate-*,gh-*
