@@ -13,3 +13,5 @@ jobs:
         with:
           exclude-tags: main,v*
           keep-n-tagged: 10
+          delete-untagged: true
+          delete-partial-images: true
