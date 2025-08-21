@@ -9,19 +9,19 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
       with:
         fetch-depth: '0'
 
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
+      uses: anothrNick/github-tag-action@e528bc2b9628971ce0e6f823f3052d1dcd9d512c # v1 # Don't use @master or @v1 unless you're happy to test the latest version
       id: tag_version
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         TAG_PREFIX: v
 
     - name: Create a GitHub release
-      uses: ncipollo/release-action@v1
+      uses: ncipollo/release-action@bcfe5470707e8832e12347755757cec0eb3c22af # v1
       with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: ${{ steps.tag_version.outputs.new_tag }}
