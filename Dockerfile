@@ -1,4 +1,4 @@
-FROM node:lts-alpine@sha256:93d1011bb2c616733850ebb39a24c665306505425e46ca99ca1990954f278539 AS builder
+FROM node:lts-alpine@sha256:dbcedd8aeab47fbc0f4dd4bffa55b7c3c729a707875968d467aaaea42d6225af AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
