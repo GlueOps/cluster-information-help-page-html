@@ -7,7 +7,7 @@ import { useEffect } from "react";
 function App() {
   const captainDomain = import.meta.env.CAPTAIN_DOMAIN || 'CAPTAIN_DOMAIN_PLACEHOLDER';
   const appsDomain = `apps.${captainDomain}`;
-  const argocdUrl = `https://argocd.${captainDomain}`;
+  const argocdUrl = `https://argocd.${captainDomain}/login`;
   const grafanaUrl = `https://grafana.${captainDomain}`;
   const vaultUrl = `https://vault.${captainDomain}`;
 
