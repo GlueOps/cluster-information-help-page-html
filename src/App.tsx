@@ -6,7 +6,9 @@ import { useEffect } from "react";
 
 function App() {
   const captainDomain = import.meta.env.CAPTAIN_DOMAIN || 'CAPTAIN_DOMAIN_PLACEHOLDER';
-  const appsDomain = `apps.${captainDomain}`;
+  const appsDomain = `*.apps.${captainDomain}`;
+  const traefikPublicDomain = `public-v2.${captainDomain}`;
+  const traefikInternalDomain = `internal-v2.${captainDomain}`;
   const argocdUrl = `https://argocd.${captainDomain}`;
   const grafanaUrl = `https://grafana.${captainDomain}`;
   const vaultUrl = `https://vault.${captainDomain}`;
@@ -38,12 +40,12 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header Section - GlueOps Style */}
-      <div className="py-20 text-center relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+      <div className="py-20 text-center relative overflow-hidden bg-linear-to-r from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
-        }}></div>
+        }}/>
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="inline-flex items-center rounded-full px-6 py-3 mb-8 border-2 bg-[#F4C624]/20 backdrop-blur-sm border-[#F4C624]/30">
             <img src="/logo.png" alt="GlueOps" className="w-8 h-8 mr-3" />
@@ -64,7 +66,7 @@ function App() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Emergency Contact Card */}
         <Card className="mb-12 border-[#F4C624]/20 shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 rounded-full -translate-y-16 translate-x-16 bg-gradient-to-br from-[#F4C624]/20 to-[#F4C624]/20" />
+          <div className="absolute top-0 right-0 w-32 h-32 rounded-full -translate-y-16 translate-x-16 bg-linear-to-br from-[#F4C624]/20 to-[#F4C624]/20" />
           <CardContent className="flex flex-col md:flex-row md:items-center gap-8 z-10 relative p-8">
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-6">
@@ -96,7 +98,7 @@ function App() {
 
         {/* Resources Table */}
         <Card className="overflow-hidden border-[#F4C624]/20 shadow-2xl">
-          <div className="px-8 py-10 border-b border-[#F4C624]/30 bg-gradient-to-r from-[#084218] to-[#084218]/90">
+          <div className="px-8 py-10 border-b border-[#F4C624]/30 bg-linear-to-r from-[#084218] to-[#084218]/90">
             <div className="flex items-center gap-4 mb-3">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg bg-[#F4C624]">
                 <svg className="w-6 h-6 text-[#084218]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,33 +123,43 @@ function App() {
                 {[
                   {
                     name: "Captain Domain:",
-                    desc: "You will find this referenced throughout the docs. This is specific to a cluster",
+                    desc: "The unique root domain assigned to this specific cluster. Refer to this value wherever CAPTAIN_DOMAIN appears in the documentation.",
                     value: captainDomain,
                   },
                   {
                     name: "Applications Domain:",
-                    desc: "When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL",
+                    desc: "The default base domain for your application Ingress entries. It is pre-configured with automatic SSL termination.",
                     value: appsDomain,
                   },
                   {
+                    name: "Public Load Balancer:",
+                    desc: "The external entry point for public web apps. Use this hostname as the CNAME target for your custom domains. SSL is supported via HTTP-01 challenges or pre-loaded certificates.",
+                    value: traefikPublicDomain,
+                  },
+                  {
+                    name: "Internal Load Balancer:",
+                    desc: "The entry point for internal/private applications. Use this hostname as the CNAME target for internal custom domains. SSL is supported via pre-loaded certificates only.",
+                    value: traefikInternalDomain,
+                  },
+                  {
                     name: "Deployments:",
-                    desc: "View all your application deployments",
+                    desc: "Manage and visualize your application deployments.",
                     value: <a href={argocdUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{argocdUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Observability:",
-                    desc: "View all your application deployment metrics (e.g. CPU, Memory, etc.)",
+                    desc: "View application logs, metrics, and system performance (CPU, Memory, etc.).",
                     value: <a href={grafanaUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{grafanaUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Secrets Management:",
-                    desc: "Manage the secrets consumed by your applications.",
+                    desc: "Securely manage your application secrets and sensitive data.",
                     value: <a href={vaultUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{vaultUrl} <ExternalLink size={16} /></a>
                   },
                 ].map((item, idx) => (
-                  <TableRow key={idx} className="hover:bg-gradient-to-r hover:from-[#F4C624]/10 hover:to-[#F4C624]/20 transition-all">
+                  <TableRow key={idx} className="hover:bg-linear-to-r hover:from-[#F4C624]/10 hover:to-[#F4C624]/20 transition-all">
                     <TableCell className="px-8 py-10 font-bold text-lg text-[#084218]">{item.name}</TableCell>
-                    <TableCell className="px-8 py-10 text-slate-600 text-lg whitespace-normal break-words min-w-[200px]">{item.desc}</TableCell>
+                    <TableCell className="px-8 py-10 text-slate-600 text-lg whitespace-normal wrap-break-word min-w-50">{item.desc}</TableCell>
                     <TableCell className="px-8 py-10 font-mono text-lg text-slate-700 select-all">{item.value}</TableCell>
                   </TableRow>
                 ))}
