@@ -67,3 +67,11 @@ export default tseslint.config([
   },
 ])
 ```
+
+
+
+## Quick Start:
+
+```
+docker build . -t test && docker run -it --env CAPTAIN_DOMAIN=foobar.onglueops.rocks -p 8080:80 test
+```

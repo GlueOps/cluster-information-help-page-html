@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 function App() {
   const captainDomain = import.meta.env.CAPTAIN_DOMAIN || 'CAPTAIN_DOMAIN_PLACEHOLDER';
-  const legacyAppsDomain = `apps.${captainDomain}`;
+  const appsDomain = `*.apps.${captainDomain}`;
   const traefikPublicDomain = `public-v2.${captainDomain}`;
   const traefikInternalDomain = `internal-v2.${captainDomain}`;
   const argocdUrl = `https://argocd.${captainDomain}`;
@@ -123,37 +123,37 @@ function App() {
                 {[
                   {
                     name: "Captain Domain:",
-                    desc: "You will find this referenced throughout the docs. This is specific to a cluster.",
+                    desc: "The unique root domain assigned to this specific cluster. Refer to this value wherever CAPTAIN_DOMAIN appears in the documentation.",
                     value: captainDomain,
                   },
                   {
                     name: "Applications Domain:",
-                    desc: "When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL.",
-                    value: legacyAppsDomain,
+                    desc: "The default base domain for your application Ingress entries. It is pre-configured with automatic SSL termination.",
+                    value: appsDomain,
                   },
                   {
                     name: "Public LoadBalancer:",
-                    desc: "When creating ingress entries for your web apps. This Domain is already configured to your cluster can, and be used as a CNAME for your custom domain. SSL is configured already.",
+                    desc: "The external entry point for public web apps. Use this hostname as the CNAME target for your custom domains. SSL is supported via HTTP-01 challenges or pre-loaded certificates.",
                     value: traefikPublicDomain,
                   },
                   {
                     name: "Internal LoadBalancer:",
-                    desc: "When creating ingress entries for your internal apps. This Domain is already configured to your cluster, and can be used as a CNAME for your custom domain. SSL is configured already.",
+                    desc: "The entry point for internal/private applications. Use this hostname as the CNAME target for internal custom domains. SSL is supported via pre-loaded certificates only.",
                     value: traefikInternalDomain,
                   },
                   {
                     name: "Deployments:",
-                    desc: "View all your application deployments.",
+                    desc: "Access the dashboard to manage and visualize your application deployments.",
                     value: <a href={argocdUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{argocdUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Observability:",
-                    desc: "View all your application deployment metrics (e.g. CPU, Memory, etc.)",
+                    desc: "Access the dashboard to view application metrics and system performance (CPU, Memory, etc.).",
                     value: <a href={grafanaUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{grafanaUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Secrets Management:",
-                    desc: "Manage the secrets consumed by your applications.",
+                    desc: "Access the interface to securely store and manage application secrets.",
                     value: <a href={vaultUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{vaultUrl} <ExternalLink size={16} /></a>
                   },
                 ].map((item, idx) => (
