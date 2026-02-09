@@ -132,28 +132,28 @@ function App() {
                     value: appsDomain,
                   },
                   {
-                    name: "Public LoadBalancer:",
+                    name: "Public Load Balancer:",
                     desc: "The external entry point for public web apps. Use this hostname as the CNAME target for your custom domains. SSL is supported via HTTP-01 challenges or pre-loaded certificates.",
                     value: traefikPublicDomain,
                   },
                   {
-                    name: "Internal LoadBalancer:",
+                    name: "Internal Load Balancer:",
                     desc: "The entry point for internal/private applications. Use this hostname as the CNAME target for internal custom domains. SSL is supported via pre-loaded certificates only.",
                     value: traefikInternalDomain,
                   },
                   {
                     name: "Deployments:",
-                    desc: "Access the dashboard to manage and visualize your application deployments.",
+                    desc: "Manage and visualize your application deployments.",
                     value: <a href={argocdUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{argocdUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Observability:",
-                    desc: "Access the dashboard to view application metrics and system performance (CPU, Memory, etc.).",
+                    desc: "View application logs, metrics, and system performance (CPU, Memory, etc.).",
                     value: <a href={grafanaUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{grafanaUrl} <ExternalLink size={16} /></a>
                   },
                   {
                     name: "Secrets Management:",
-                    desc: "Access the interface to securely store and manage application secrets.",
+                    desc: "Securely manage your application secrets and sensitive data.",
                     value: <a href={vaultUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{vaultUrl} <ExternalLink size={16} /></a>
                   },
                 ].map((item, idx) => (
