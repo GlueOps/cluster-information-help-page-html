@@ -7,8 +7,8 @@ import { useEffect } from "react";
 function App() {
   const captainDomain = import.meta.env.CAPTAIN_DOMAIN || 'CAPTAIN_DOMAIN_PLACEHOLDER';
   const legacyAppsDomain = `apps.${captainDomain}`;
-  const traefikPublicDomain = `public.${captainDomain}`;
-  const traefikInternalDomain = `internal.${captainDomain}`;
+  const traefikPublicDomain = `public-v2.${captainDomain}`;
+  const traefikInternalDomain = `internal-v2.${captainDomain}`;
   const argocdUrl = `https://argocd.${captainDomain}`;
   const grafanaUrl = `https://grafana.${captainDomain}`;
   const vaultUrl = `https://vault.${captainDomain}`;
@@ -123,27 +123,27 @@ function App() {
                 {[
                   {
                     name: "Captain Domain:",
-                    desc: "You will find this referenced throughout the docs. This is specific to a cluster",
+                    desc: "You will find this referenced throughout the docs. This is specific to a cluster.",
                     value: captainDomain,
                   },
                   {
                     name: "Applications Domain:",
-                    desc: "When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL using the legacy ingress-nginx controller",
+                    desc: "When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL.",
                     value: legacyAppsDomain,
                   },
                   {
-                    name: "Traefik Applications Domain:",
-                    desc: "When creating ingress entries for your web apps. This Applications Domain is already configured to your cluster and will provide immediate SSL using the new traefik controller",
+                    name: "Public LoadBalancer:",
+                    desc: "When creating ingress entries for your web apps. This Domain is already configured to your cluster can, and be used as a CNAME for your custom domain. SSL is configured already.",
                     value: traefikPublicDomain,
                   },
                   {
-                    name: "Traefik Internal Domain:",
-                    desc: "When creating ingress entries for your internal apps. This Applications Domain is already configured to your cluster and will provide immediate SSL using the new traefik controller",
+                    name: "Internal LoadBalancer:",
+                    desc: "When creating ingress entries for your internal apps. This Domain is already configured to your cluster, and can be used as a CNAME for your custom domain. SSL is configured already.",
                     value: traefikInternalDomain,
                   },
                   {
                     name: "Deployments:",
-                    desc: "View all your application deployments",
+                    desc: "View all your application deployments.",
                     value: <a href={argocdUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{argocdUrl} <ExternalLink size={16} /></a>
                   },
                   {
