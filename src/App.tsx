@@ -12,7 +12,9 @@ function App() {
   const argocdUrl = `https://argocd.${captainDomain}`;
   const grafanaUrl = `https://grafana.${captainDomain}`;
   const vaultUrl = `https://vault.${captainDomain}`;
-
+  const traefikPublicDashboard = `https://dashboard-traefik-public-v2.${captainDomain}`
+  const traefikInternalDashboard = `https://dashboard-traefik-internal-v2.${captainDomain}`
+  
   useEffect(() => {
     document.title = `GlueOps - ${captainDomain}`;
 
@@ -156,6 +158,16 @@ function App() {
                     desc: "Securely manage your application secrets and sensitive data.",
                     value: <a href={vaultUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{vaultUrl} <ExternalLink size={16} /></a>
                   },
+                  {
+                    name: "Public Load Balancer Dashboard:",
+                    desc: "View your Public Load Balancer Resources",
+                    value: <a href={traefikPublicDashboard} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{traefikPublicDashboard} <ExternalLink size={16} /></a>
+                  },
+                  {
+                    name: "Internal Load Balancer Dashboard:",
+                    desc: "View your Internal Load Balancer Resources",
+                    value: <a href={traefikInternalDashboard} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{traefikInternalDashboard} <ExternalLink size={16} /></a>
+                  }
                 ].map((item, idx) => (
                   <TableRow key={idx} className="hover:bg-linear-to-r hover:from-[#F4C624]/10 hover:to-[#F4C624]/20 transition-all">
                     <TableCell className="px-8 py-10 font-bold text-lg text-[#084218]">{item.name}</TableCell>
