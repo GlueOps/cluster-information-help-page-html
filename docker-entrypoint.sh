@@ -17,6 +17,11 @@ if [ -n "$MAIN_JS_FILE" ]; then
         sed -i "s|CAPTAIN_DOMAIN_PLACEHOLDER|$CAPTAIN_DOMAIN|g" "$MAIN_JS_FILE"
         echo "Replaced CAPTAIN_DOMAIN_PLACEHOLDER with: $CAPTAIN_DOMAIN"
     fi
+
+    # Replace INTERNAL_LB_ENABLED placeholder (default: FALSE)
+    INTERNAL_LB_VALUE="${INTERNAL_LB_ENABLED:-FALSE}"
+    sed -i "s|INTERNAL_LB_ENABLED_PLACEHOLDER|$INTERNAL_LB_VALUE|g" "$MAIN_JS_FILE"
+    echo "Replaced INTERNAL_LB_ENABLED_PLACEHOLDER with: $INTERNAL_LB_VALUE"
 else
     echo "Warning: Could not find main JS file"
 fi
@@ -30,6 +35,8 @@ for HTML_FILE in $HTML_FILES; do
             sed -i "s|CAPTAIN_DOMAIN_PLACEHOLDER|$CAPTAIN_DOMAIN|g" "$HTML_FILE"
             echo "Replaced CAPTAIN_DOMAIN_PLACEHOLDER in $HTML_FILE with: $CAPTAIN_DOMAIN"
         fi
+        INTERNAL_LB_VALUE="${INTERNAL_LB_ENABLED:-FALSE}"
+        sed -i "s|INTERNAL_LB_ENABLED_PLACEHOLDER|$INTERNAL_LB_VALUE|g" "$HTML_FILE"
     fi
 done
 

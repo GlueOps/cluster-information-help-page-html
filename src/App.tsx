@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 function App() {
   const captainDomain = import.meta.env.CAPTAIN_DOMAIN || 'CAPTAIN_DOMAIN_PLACEHOLDER';
+  const internalLbEnabled = (import.meta.env.INTERNAL_LB_ENABLED || 'INTERNAL_LB_ENABLED_PLACEHOLDER').toUpperCase() === 'TRUE';
   const appsDomain = `*.apps.${captainDomain}`;
   const traefikPublicDomain = `public-v2.${captainDomain}`;
   const traefikInternalDomain = `internal-v2.${captainDomain}`;
@@ -138,11 +139,11 @@ function App() {
                     desc: "The external entry point for public web apps. Use this hostname as the CNAME target for your custom domains. SSL is supported via HTTP-01 challenges or pre-loaded certificates.",
                     value: traefikPublicDomain,
                   },
-                  {
+                  ...(internalLbEnabled ? [{
                     name: "Internal Load Balancer:",
                     desc: "The entry point for internal/private applications. Use this hostname as the CNAME target for internal custom domains. SSL is supported via pre-loaded certificates only.",
                     value: traefikInternalDomain,
-                  },
+                  }] : []),
                   {
                     name: "Deployments:",
                     desc: "Manage and visualize your application deployments.",
@@ -159,20 +160,20 @@ function App() {
                     value: <a href={vaultUrl} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{vaultUrl} <ExternalLink size={16} /></a>
                   },
                   {
-                    name: "Public Load Balancer Dashboard:",
+                    name: "Public LB Dashboard:",
                     desc: "View your Public Load Balancer Resources",
                     value: <a href={traefikPublicDashboard} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{traefikPublicDashboard} <ExternalLink size={16} /></a>
                   },
-                  {
-                    name: "Internal Load Balancer Dashboard:",
+                  ...(internalLbEnabled ? [{
+                    name: "Internal LB Dashboard:",
                     desc: "View your Internal Load Balancer Resources",
                     value: <a href={traefikInternalDashboard} target="_blank" className="inline-flex items-center gap-2 text-[#084218] hover:text-[#F4C624]">{traefikInternalDashboard} <ExternalLink size={16} /></a>
-                  }
+                  }] : [])
                 ].map((item, idx) => (
                   <TableRow key={idx} className="hover:bg-linear-to-r hover:from-[#F4C624]/10 hover:to-[#F4C624]/20 transition-all">
                     <TableCell className="px-8 py-10 font-bold text-lg text-[#084218]">{item.name}</TableCell>
                     <TableCell className="px-8 py-10 text-slate-600 text-lg whitespace-normal wrap-break-word min-w-50">{item.desc}</TableCell>
-                    <TableCell className="px-8 py-10 font-mono text-lg text-slate-700 select-all">{item.value}</TableCell>
+                    <TableCell className="px-8 py-10 text-lg text-slate-700 select-all">{item.value}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
