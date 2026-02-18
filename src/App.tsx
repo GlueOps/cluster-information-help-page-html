@@ -105,7 +105,7 @@ function App() {
                     <p style={headerStyle} className="text-2xl text-white">+1-877-GLUE-OPS</p>
                   </div>
                 </div>
-                <a href="https://docs.glueops.dev" style={subHeaderStyle} className="flex items-center justify-between p-4 rounded-lg bg-[#084218] text-white hover:bg-[#084218]/80 transition-colors">
+                <a href="https://docs.glueops.dev" target="_blank" rel="noopener noreferrer" style={subHeaderStyle} className="flex items-center justify-between p-4 rounded-lg bg-[#084218] text-white hover:bg-[#084218]/80 transition-colors">
                   <span className="flex items-center gap-2"><BookOpen size={18} /> Documentation</span>
                   <ExternalLink size={14} />
                 </a>
@@ -163,6 +163,7 @@ function App() {
                     <a 
                       href={tool.url} 
                       target="_blank" 
+                      rel="noopener noreferrer"
                       style={subHeaderStyle}
                       className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-transparent border border-[#F4C624] text-[#F4C624] hover:bg-[#F4C624] hover:text-[#084218] transition-all"
                     >
