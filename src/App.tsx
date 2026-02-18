@@ -49,7 +49,14 @@ function App() {
         desc: "Real-time public traffic routing stats.", 
         icon: <Activity className="text-[#084218]" />,
         tag: "Traefik"
-    }
+    },
+    ...(internalLbEnabled ? [{
+        name: "Internal LB Dashboard",
+        url: `https://dashboard-traefik-internal-v2.${captainDomain}`,
+        desc: "Real-time internal traffic routing stats.",
+        icon: <Activity className="text-[#084218]" />,
+        tag: "Traefik"
+    }] : []),
   ];
 
   useEffect(() => {
@@ -111,7 +118,15 @@ function App() {
                     </p>
                     <div className="flex items-center justify-between">
                       <code className="text-sm text-slate-300 break-all font-mono">{dom.value}</code>
-                      <button className="text-slate-500 hover:text-[#F4C624] transition-colors ml-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(dom.value);
+                          }
+                        }}
+                        className="text-slate-500 hover:text-[#F4C624] transition-colors ml-2"
+                      >
                         <Copy size={14} />
                       </button>
                     </div>
