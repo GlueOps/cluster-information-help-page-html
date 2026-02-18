@@ -42,7 +42,14 @@ function App() {
         desc: "Real-time public traffic routing stats.", 
         icon: <Activity className="text-[#084218]" />,
         tag: "Traefik"
-    }
+    },
+    ...(internalLbEnabled ? [{
+        name: "Internal LB Dashboard",
+        url: `https://dashboard-traefik-internal-v2.${captainDomain}`,
+        desc: "Real-time internal traffic routing stats.",
+        icon: <Activity className="text-[#084218]" />,
+        tag: "Traefik"
+    }] : []),
   ];
 
   useEffect(() => {
