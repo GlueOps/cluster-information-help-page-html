@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen } from 'lucide-react';
 import { useEffect } from "react";
+import { toast } from 'sonner';
 
 interface RuntimeEnv {
   CAPTAIN_DOMAIN?: string;
@@ -65,6 +66,19 @@ function App() {
     }] : []),
   ];
 
+  const handleCopy = async (text: string, label: string) => {
+    try {
+      if (!navigator.clipboard) {
+        throw new Error("Clipboard API not available")
+      }
+      await navigator.clipboard.writeText(text)
+      toast.success(`${label} copied to clipboard`)
+    } catch (err) {
+      console.error("Failed to copy!", err);
+      toast.error(`Failed to copy ${label}`);
+    }
+  }
+
   useEffect(() => {
     document.title = `GlueOps - ${captainDomain}`;
   }, [captainDomain]);
@@ -126,11 +140,7 @@ function App() {
                       <code className="text-sm text-slate-300 break-all font-mono">{dom.value}</code>
                       <button
                         type="button"
-                        onClick={() => {
-                          if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-                            navigator.clipboard.writeText(dom.value);
-                          }
-                        }}
+                        onClick={() => handleCopy(dom.value, dom.label)}
                         className="text-slate-500 hover:text-[#F4C624] transition-colors ml-2"
                       >
                         <Copy size={14} />
