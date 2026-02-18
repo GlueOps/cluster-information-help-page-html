@@ -3,8 +3,14 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen } from 'lucide-react';
 import { useEffect } from "react";
 
-const getEnv = (key, placeholder) => {
-  return (window._env_ && window._env_[key]) || import.meta.env[key] || placeholder;
+interface RuntimeEnv {
+  CAPTAIN_DOMAIN?: string;
+  INTERNAL_LB_ENABLED?: string;
+}
+
+const getEnv = (key: keyof RuntimeEnv, placeholder: string) => {
+  const env = (window as any)._env_ as RuntimeEnv;
+  return env?.[key] || (import.meta.env[key] as string) || placeholder;
 };
 
 function App() {
