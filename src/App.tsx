@@ -110,7 +110,15 @@ function App() {
                     </p>
                     <div className="flex items-center justify-between">
                       <code className="text-sm text-slate-300 break-all font-mono">{dom.value}</code>
-                      <button className="text-slate-500 hover:text-[#F4C624] transition-colors ml-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(dom.value);
+                          }
+                        }}
+                        className="text-slate-500 hover:text-[#F4C624] transition-colors ml-2"
+                      >
                         <Copy size={14} />
                       </button>
                     </div>
