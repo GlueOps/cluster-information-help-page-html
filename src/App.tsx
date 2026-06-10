@@ -1,12 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen } from 'lucide-react';
+import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen, Terminal, Network, KeyRound } from 'lucide-react';
 import { useEffect } from "react";
 import { toast } from 'sonner';
 
 interface RuntimeEnv {
   CAPTAIN_DOMAIN?: string;
   INTERNAL_LB_ENABLED?: string;
+  KUBEADM_ENABLED?: string;
+  CLUSTER_CA_CERTIFICATE?: string;
 }
 
 const getEnv = (key: keyof RuntimeEnv, placeholder: string) => {
@@ -20,6 +22,45 @@ function App() {
 
   const captainDomain = getEnv('CAPTAIN_DOMAIN', 'CAPTAIN_DOMAIN_PLACEHOLDER');
   const internalLbEnabled = getEnv('INTERNAL_LB_ENABLED', 'FALSE').toUpperCase() === 'TRUE';
+  const kubeadmEnabled = getEnv('KUBEADM_ENABLED', 'FALSE').toUpperCase() === 'TRUE';
+  const clusterCaCertificate = getEnv('CLUSTER_CA_CERTIFICATE', '');
+  // Default namespace = first label of the captain domain (e.g. "nonprod" from "nonprod.jupiter.onglueops.rocks")
+  const defaultNamespace = captainDomain.split('.')[0];
+
+  const kubeconfig = `apiVersion: v1
+kind: Config
+clusters:
+  - name: ${captainDomain}
+    cluster:
+      server: https://kube-api.${captainDomain}
+      certificate-authority-data: "${clusterCaCertificate}"
+contexts:
+  - name: ${captainDomain}
+    context:
+      cluster: ${captainDomain}
+      user: ${captainDomain}
+      namespace: ${defaultNamespace}
+current-context: ${captainDomain}
+users:
+  - name: ${captainDomain}
+    user:
+      exec:
+        apiVersion: client.authentication.k8s.io/v1
+        env:
+          - name: NODE_OPTIONS
+            value: --no-deprecation
+        command: kubectl
+        args:
+          - oidc-login
+          - get-token
+          - --grant-type=device-code
+          - --oidc-issuer-url=https://dex.${captainDomain}
+          - --oidc-client-id=kubectl
+          - --oidc-extra-scope=profile
+          - --oidc-extra-scope=email
+          - --oidc-extra-scope=groups
+        interactiveMode: IfAvailable
+`;
 
   const domains = [
     { label: "Captain Domain", value: captainDomain, icon: <Globe className="w-4 h-4" /> },
@@ -29,41 +70,37 @@ function App() {
   ];
 
   const tools = [
-    { 
-        name: "Deployments", 
-        url: `https://argocd.${captainDomain}`, 
-        desc: "Manage and visualize application lifecycles.", 
+    {
+        name: "Deployments",
+        desc: "Manage and visualize application lifecycles.",
         icon: <Box className="text-[#084218]" />,
-        tag: "ArgoCD"
+        tag: "ArgoCD",
+        links: [{ label: "Open Dashboard", url: `https://argocd.${captainDomain}` }],
     },
-    { 
-        name: "Observability", 
-        url: `https://grafana.${captainDomain}`, 
-        desc: "Logs, metrics, and system performance.", 
+    {
+        name: "Observability",
+        desc: "Logs, metrics, and system performance.",
         icon: <Activity className="text-[#084218]" />,
-        tag: "Grafana"
+        tag: "Grafana",
+        links: [{ label: "Open Dashboard", url: `https://grafana.${captainDomain}` }],
     },
-    { 
-        name: "Secrets", 
-        url: `https://vault.${captainDomain}`, 
-        desc: "Secure management of sensitive data.", 
-        icon: <Shield className="text-[#084218]" />,
-        tag: "Vault"
+    {
+        name: "Secrets",
+        desc: "Secure management of sensitive data.",
+        icon: <KeyRound className="text-[#084218]" />,
+        tag: "Vault",
+        links: [{ label: "Open Dashboard", url: `https://vault.${captainDomain}` }],
     },
-    { 
-        name: "Public LB Dashboard", 
-        url: `https://dashboard-traefik-public-v2.${captainDomain}`, 
-        desc: "Real-time public traffic routing stats.", 
-        icon: <Activity className="text-[#084218]" />,
-        tag: "Traefik"
+    {
+        name: "LB Dashboards",
+        desc: "Real-time traffic routing stats.",
+        icon: <Network className="text-[#084218]" />,
+        tag: "Traefik",
+        links: [
+            { label: "Public", url: `https://dashboard-traefik-public-v2.${captainDomain}` },
+            ...(internalLbEnabled ? [{ label: "Internal", url: `https://dashboard-traefik-internal-v2.${captainDomain}` }] : []),
+        ],
     },
-    ...(internalLbEnabled ? [{
-        name: "Internal LB Dashboard",
-        url: `https://dashboard-traefik-internal-v2.${captainDomain}`,
-        desc: "Real-time internal traffic routing stats.",
-        icon: <Activity className="text-[#084218]" />,
-        tag: "Traefik"
-    }] : []),
   ];
 
   const handleCopy = async (text: string, label: string) => {
@@ -86,9 +123,9 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Header */}
-      <header className="bg-[#084218] border-b border-[#F4C624]/20 py-12 px-6">
+      <header className="bg-[#084218] border-b border-[#F4C624]/20 py-4 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg">
                 <img src="/logo.png" alt="GlueOps" className="w-12 h-12" />
             </div>
@@ -103,11 +140,11 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <main className="max-w-7xl mx-auto px-6 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 flex flex-col gap-6">
             <Card className="bg-slate-800 border-[#F4C624]/30 shadow-xl">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-4 mb-6">
@@ -126,11 +163,11 @@ function App() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800 border-slate-700 shadow-xl">
+            <Card className="bg-slate-800 border-slate-700 shadow-xl grow">
               <CardHeader>
                 <CardTitle style={subHeaderStyle} className="text-sm uppercase tracking-widest text-[#F4C624]">Network Endpoints</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="grow flex flex-col justify-between gap-4">
                 {domains.map((dom, i) => (
                   <div key={i} className="group p-3 rounded-md border border-slate-700 bg-slate-900/50 hover:border-[#F4C624]/50 transition-all">
                     <p style={subHeaderStyle} className="text-xs text-slate-500 uppercase flex items-center gap-2 mb-1">
@@ -154,7 +191,7 @@ function App() {
 
           {/* Main Tool Grid */}
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:h-full lg:auto-rows-fr">
               {tools.map((tool, i) => (
                 <Card key={i} className="bg-slate-800 border-slate-700 group hover:border-[#F4C624] transition-all duration-300 shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
@@ -165,19 +202,24 @@ function App() {
                       {tool.tag}
                     </Badge>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="grow flex flex-col">
                     <CardTitle style={headerStyle} className="text-2xl text-white mb-2">{tool.name}</CardTitle>
                     <CardDescription className="text-slate-400 mb-6 h-12">
                       {tool.desc}
                     </CardDescription>
-                    <a 
-                      href={tool.url} 
-                      target="_blank" 
-                      style={subHeaderStyle}
-                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-transparent border border-[#F4C624] text-[#F4C624] hover:bg-[#F4C624] hover:text-[#084218] transition-all"
-                    >
-                      Open Dashboard <ExternalLink size={14} />
-                    </a>
+                    <div className="flex gap-3 mt-auto">
+                      {tool.links.map((link, j) => (
+                        <a
+                          key={j}
+                          href={link.url}
+                          target="_blank"
+                          style={subHeaderStyle}
+                          className="flex flex-1 items-center justify-center gap-2 py-2.5 rounded-lg bg-transparent border border-[#F4C624] text-[#F4C624] hover:bg-[#F4C624] hover:text-[#084218] transition-all"
+                        >
+                          {link.label} <ExternalLink size={14} />
+                        </a>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -185,6 +227,34 @@ function App() {
           </div>
 
         </div>
+
+        {/* Kubeconfig (only rendered when kubeadm is enabled) */}
+        {kubeadmEnabled && (
+          <div className="mt-8">
+            <Card className="bg-slate-800 border-slate-700 shadow-xl">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0">
+                <div>
+                  <CardTitle style={subHeaderStyle} className="text-sm uppercase tracking-widest text-[#F4C624] flex items-center gap-2">
+                    <Terminal size={16} /> Kubeconfig
+                  </CardTitle>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleCopy(kubeconfig, 'Kubeconfig')}
+                  style={subHeaderStyle}
+                  className="flex items-center gap-2 py-2 px-4 rounded-lg bg-transparent border border-[#F4C624] text-[#F4C624] hover:bg-[#F4C624] hover:text-[#084218] transition-all shrink-0 ml-4"
+                >
+                  <Copy size={14} /> Copy
+                </button>
+              </CardHeader>
+              <CardContent>
+                <pre className="overflow-x-auto rounded-md border border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-300 font-mono">
+                  <code>{kubeconfig}</code>
+                </pre>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
     </div>
   )
