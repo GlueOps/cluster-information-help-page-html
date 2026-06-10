@@ -10,7 +10,7 @@ interface RuntimeEnv {
 }
 
 const getEnv = (key: keyof RuntimeEnv, placeholder: string) => {
-  const env = (window as any)._env_ as RuntimeEnv;
+  const env = (window as unknown as { _env_?: RuntimeEnv })._env_;
   return env?.[key] || (import.meta.env[key] as string) || placeholder;
 };
 
