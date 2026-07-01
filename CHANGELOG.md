@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.28.1](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.28.0...v4.28.1) (2026-07-01)
+
+
+### Miscellaneous Chores
+
+* **fallback:** update docker/setup-qemu-action ([#1128](https://github.com/GlueOps/cluster-information-help-page-html/issues/1128)) ([f75b752](https://github.com/GlueOps/cluster-information-help-page-html/commit/f75b752a65072c17250398046fe6b4cb55b91950))
+* lock file maintenance ([#1123](https://github.com/GlueOps/cluster-information-help-page-html/issues/1123)) ([9990b9e](https://github.com/GlueOps/cluster-information-help-page-html/commit/9990b9ec76dc37eb574dc0cd2852392d5af52429))
+* **patch:** update @types/react to 19.2.16 #patch ([#1129](https://github.com/GlueOps/cluster-information-help-page-html/issues/1129)) ([74f7b76](https://github.com/GlueOps/cluster-information-help-page-html/commit/74f7b76d5616f6b70cf54e9b2f475567cbcf4401))
+* **patch:** update typescript-eslint to 8.60.1 #patch ([#1131](https://github.com/GlueOps/cluster-information-help-page-html/issues/1131)) ([7efbefd](https://github.com/GlueOps/cluster-information-help-page-html/commit/7efbefd2a5d7421d3258ddd68a9bad67b067bc7a))
+* **patch:** update vite to 8.0.15 #patch ([#1125](https://github.com/GlueOps/cluster-information-help-page-html/issues/1125)) ([466b0e7](https://github.com/GlueOps/cluster-information-help-page-html/commit/466b0e72256c7ea4722fc1a41ca53bef2dced634))
+* **patch:** update vite to 8.0.16 #patch ([#1127](https://github.com/GlueOps/cluster-information-help-page-html/issues/1127)) ([a566e1d](https://github.com/GlueOps/cluster-information-help-page-html/commit/a566e1d6a3ca7175346e6501f1d1fa4eabc981a8))
+
 ## [4.28.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.27.0...v4.28.0) (2026-06-30)
 
 
