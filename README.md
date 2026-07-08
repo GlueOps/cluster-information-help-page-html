@@ -125,7 +125,9 @@ Dockerfile                # Multi-stage: node build -> nginx runtime
 ## Deployment & releases
 
 - **Container image** — built and pushed to GHCR by
-  [`.github/workflows/container_image.yaml`](./.github/workflows/container_image.yaml).
+  [`.github/workflows/container_image.yaml`](./.github/workflows/container_image.yaml),
+  which runs on `v*` tags. A `lint_and_test` job (`npm ci` → `lint` → `test:run`
+  → `build`) gates the image build, so a release only publishes when those pass.
 - **Releases** — versioned automatically via release-please
   ([`.github/workflows/release-please.yaml`](./.github/workflows/release-please.yaml)),
   which relies on [Conventional Commits](https://www.conventionalcommits.org/).
