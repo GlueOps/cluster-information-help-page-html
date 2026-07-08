@@ -10,7 +10,34 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: lts/* # match the node:lts-alpine base image in the Dockerfile
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:run
+
+      - name: Build
+        run: npm run build
+
   build_tag_push_to_ghcr:
+    needs: lint_and_test
     runs-on: ubuntu-latest
     permissions:
       contents: read
