@@ -45,11 +45,27 @@ VARIATIONS=(
   "both|TRUE|TRUE|yes|internal LB on · kubeadm on · CA present"
 )
 
+# If the run aborts before pr-screenshots.mjs writes comment.md (docker build,
+# image pull, or npm install failed), leave an honest placeholder so the sticky
+# PR comment reflects THIS run rather than going silent or keeping a stale prior
+# comment. Never overwrites a real comment written by the capture step.
+write_fallback_comment() {
+  [ -f "$OUT_DIR/comment.md" ] && return
+  mkdir -p "$OUT_DIR"
+  {
+    echo "### 📸 UI Screenshots"
+    echo ""
+    echo "⚠️ Screenshot run for \`$COMMIT_SHA\` aborted before any screenshots were captured"
+    echo "(image build, Playwright image pull, or npm install failed). See the workflow logs."
+  } > "$OUT_DIR/comment.md"
+}
+
 cleanup() {
   for v in "${VARIATIONS[@]}"; do
     docker rm -f "shot-${v%%|*}" >/dev/null 2>&1 || true
   done
   docker network rm "$NETWORK" >/dev/null 2>&1 || true
+  write_fallback_comment
 }
 trap cleanup EXIT INT TERM
 
