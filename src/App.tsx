@@ -8,7 +8,6 @@ interface RuntimeEnv {
   CAPTAIN_DOMAIN?: string;
   INTERNAL_LB_ENABLED?: string;
   KUBEADM_ENABLED?: string;
-  GOLDILOCKS_ENABLED?: string;
   CLUSTER_CA_CERTIFICATE?: string;
 }
 
@@ -24,7 +23,6 @@ function App() {
   const captainDomain = getEnv('CAPTAIN_DOMAIN', 'CAPTAIN_DOMAIN_PLACEHOLDER');
   const internalLbEnabled = getEnv('INTERNAL_LB_ENABLED', 'FALSE').toUpperCase() === 'TRUE';
   const kubeadmEnabled = getEnv('KUBEADM_ENABLED', 'FALSE').toUpperCase() === 'TRUE';
-  const goldilocksEnabled = getEnv('GOLDILOCKS_ENABLED', 'FALSE').toUpperCase() === 'TRUE'
   const clusterCaCertificate = getEnv('CLUSTER_CA_CERTIFICATE', '');
   // Default namespace = first label of the captain domain (e.g. "nonprod" from "nonprod.jupiter.onglueops.rocks")
   const defaultNamespace = captainDomain.split('.')[0];
@@ -103,7 +101,7 @@ users:
             ...(internalLbEnabled ? [{ label: "Internal", url: `https://dashboard-traefik-internal-v2.${captainDomain}` }] : []),
         ],
     },
-    ...(goldilocksEnabled ? [{
+    ...(kubeadmEnabled ? [{
         name: "Goldilocks",
         desc: "Right-size resource requests and limits.",
         icon: <Gauge className="text-[#084218]" />,
