@@ -27,8 +27,7 @@ environment variables.
 | ------------------------ | ----------- | ------ |
 | `CAPTAIN_DOMAIN`         | `localhost` | Base domain for the cluster. All tool/endpoint URLs are derived from it (e.g. `argocd.<CAPTAIN_DOMAIN>`), and the default kubeconfig namespace is its first label. |
 | `INTERNAL_LB_ENABLED`    | `FALSE`     | When `TRUE`, shows the Internal Load Balancer endpoint and the Traefik "Internal" dashboard link. |
-| `KUBEADM_ENABLED`        | `FALSE`     | When `TRUE`, renders the copy-paste `kubeconfig` block (OIDC device-code login via `kubectl oidc-login`). |
-| `GOLDILOCKS_ENABLED`     | `FALSE`     | When `TRUE`, shows the Goldilocks card linking to `goldilocks.<CAPTAIN_DOMAIN>`. |
+| `KUBEADM_ENABLED`        | `FALSE`     | When `TRUE`, renders the copy-paste `kubeconfig` block (OIDC device-code login via `kubectl oidc-login`), and shows the Goldilocks card linking to `goldilocks.<CAPTAIN_DOMAIN>`. |
 | `CLUSTER_CA_CERTIFICATE` | *(empty)*   | Cluster CA in PEM format. The entrypoint base64-encodes it into the kubeconfig's `certificate-authority-data`. Only relevant when `KUBEADM_ENABLED=TRUE`. |
 
 Boolean flags are case-insensitive; any value other than `TRUE` is treated as
@@ -41,7 +40,7 @@ docker build . -t cluster-info
 docker run --rm -it \
   -e CAPTAIN_DOMAIN=nonprod.jupiter.onglueops.rocks \
   -e INTERNAL_LB_ENABLED=TRUE \
-  -e GOLDILOCKS_ENABLED=TRUE \
+  -e KUBEADM_ENABLED=TRUE \
   -p 8080:8080 \
   cluster-info
 ```
@@ -72,7 +71,6 @@ window._env_ = {
   CAPTAIN_DOMAIN: "nonprod.jupiter.onglueops.rocks",
   INTERNAL_LB_ENABLED: "TRUE",
   KUBEADM_ENABLED: "FALSE",
-  GOLDILOCKS_ENABLED: "TRUE",
   CLUSTER_CA_CERTIFICATE: "",
 };
 ```

@@ -29,6 +29,16 @@ describe("tool grid", () => {
   it("adds the internal LB link when INTERNAL_LB_ENABLED=TRUE", () => {
     expect(regionHtml({ INTERNAL_LB_ENABLED: "TRUE" }, "tool-grid")).toMatchSnapshot();
   });
+
+  // Asserted directly rather than snapshotted: the Goldilocks card is one of
+  // five in a large grid, so a `-u` on an unrelated churn can silently drop it.
+  it("shows the Goldilocks card when KUBEADM_ENABLED=TRUE", () => {
+    expect(regionHtml({ KUBEADM_ENABLED: "TRUE" }, "tool-grid")).toContain("Goldilocks");
+  });
+
+  it("hides the Goldilocks card when KUBEADM_ENABLED=FALSE", () => {
+    expect(regionHtml({ KUBEADM_ENABLED: "FALSE" }, "tool-grid")).not.toContain("Goldilocks");
+  });
 });
 
 describe("network endpoints", () => {
