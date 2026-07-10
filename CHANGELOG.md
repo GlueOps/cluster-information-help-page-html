@@ -1,5 +1,35 @@
 # Changelog
 
+## [4.29.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.28.0...v4.29.0) (2026-07-10)
+
+
+### Features
+
+* update typescript-eslint to 8.61.0 #minor ([#1139](https://github.com/GlueOps/cluster-information-help-page-html/issues/1139)) ([c2cb5c8](https://github.com/GlueOps/cluster-information-help-page-html/commit/c2cb5c88433c362d26890611af946458e90206f0))
+
+
+### Bug Fixes
+
+* folding goldilocks card into kubeadm enabled ([#1143](https://github.com/GlueOps/cluster-information-help-page-html/issues/1143)) ([9d029e3](https://github.com/GlueOps/cluster-information-help-page-html/commit/9d029e3acbdcfacd0d07051a3bb81285e567accb))
+
+
+### Miscellaneous Chores
+
+* **fallback:** update docker/setup-qemu-action ([#1128](https://github.com/GlueOps/cluster-information-help-page-html/issues/1128)) ([f75b752](https://github.com/GlueOps/cluster-information-help-page-html/commit/f75b752a65072c17250398046fe6b4cb55b91950))
+* lock file maintenance ([#1123](https://github.com/GlueOps/cluster-information-help-page-html/issues/1123)) ([9990b9e](https://github.com/GlueOps/cluster-information-help-page-html/commit/9990b9ec76dc37eb574dc0cd2852392d5af52429))
+* lock file maintenance ([#1130](https://github.com/GlueOps/cluster-information-help-page-html/issues/1130)) ([d33faf3](https://github.com/GlueOps/cluster-information-help-page-html/commit/d33faf3465b8d68c0704c91345e844bbbf7d3ee8))
+* lock file maintenance ([#1133](https://github.com/GlueOps/cluster-information-help-page-html/issues/1133)) ([e49310e](https://github.com/GlueOps/cluster-information-help-page-html/commit/e49310e1923bb828f866aad6ca95e5d60a1f7c8d))
+* lock file maintenance ([#1137](https://github.com/GlueOps/cluster-information-help-page-html/issues/1137)) ([bec79bc](https://github.com/GlueOps/cluster-information-help-page-html/commit/bec79bc8e1df9ac27858b4d935828230a7672934))
+* **lockfile:** update radix-ui-lockfile #patch ([#1136](https://github.com/GlueOps/cluster-information-help-page-html/issues/1136)) ([841377f](https://github.com/GlueOps/cluster-information-help-page-html/commit/841377fb332cbd8612508a3fd60b2578df90e78f))
+* **lockfile:** update react-router-dom-lockfile #patch ([#1132](https://github.com/GlueOps/cluster-information-help-page-html/issues/1132)) ([818ccd6](https://github.com/GlueOps/cluster-information-help-page-html/commit/818ccd672cf5437bc4babd00c2b1de55e62caded))
+* **patch:** update @types/node to 25.9.2 #patch ([#1135](https://github.com/GlueOps/cluster-information-help-page-html/issues/1135)) ([4c0ad6a](https://github.com/GlueOps/cluster-information-help-page-html/commit/4c0ad6aa5f9e3e799a6f2eb74d777a15a09d664d))
+* **patch:** update @types/react to 19.2.16 #patch ([#1129](https://github.com/GlueOps/cluster-information-help-page-html/issues/1129)) ([74f7b76](https://github.com/GlueOps/cluster-information-help-page-html/commit/74f7b76d5616f6b70cf54e9b2f475567cbcf4401))
+* **patch:** update @types/react to 19.2.17 #patch ([#1134](https://github.com/GlueOps/cluster-information-help-page-html/issues/1134)) ([065a9b6](https://github.com/GlueOps/cluster-information-help-page-html/commit/065a9b6394b053bf26d1abe0e4678469b8fbd070))
+* **patch:** update dataaxiom/ghcr-cleanup-action to v1.2.2 #patch ([#1138](https://github.com/GlueOps/cluster-information-help-page-html/issues/1138)) ([b038ba1](https://github.com/GlueOps/cluster-information-help-page-html/commit/b038ba11e9778571ae4ba81d39b5c2f7729c2ddb))
+* **patch:** update typescript-eslint to 8.60.1 #patch ([#1131](https://github.com/GlueOps/cluster-information-help-page-html/issues/1131)) ([7efbefd](https://github.com/GlueOps/cluster-information-help-page-html/commit/7efbefd2a5d7421d3258ddd68a9bad67b067bc7a))
+* **patch:** update vite to 8.0.15 #patch ([#1125](https://github.com/GlueOps/cluster-information-help-page-html/issues/1125)) ([466b0e7](https://github.com/GlueOps/cluster-information-help-page-html/commit/466b0e72256c7ea4722fc1a41ca53bef2dced634))
+* **patch:** update vite to 8.0.16 #patch ([#1127](https://github.com/GlueOps/cluster-information-help-page-html/issues/1127)) ([a566e1d](https://github.com/GlueOps/cluster-information-help-page-html/commit/a566e1d6a3ca7175346e6501f1d1fa4eabc981a8))
+
 ## [4.28.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.27.0...v4.28.0) (2026-06-30)
 
 
