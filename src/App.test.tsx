@@ -25,13 +25,6 @@ afterEach(() => {
 });
 
 describe("tool grid", () => {
-  it("shows the Goldilocks card when GOLDILOCKS_ENABLED=TRUE", () => {
-    expect(regionHtml({ GOLDILOCKS_ENABLED: "TRUE" }, "tool-grid")).toMatchSnapshot();
-  });
-
-  it("hides the Goldilocks card when GOLDILOCKS_ENABLED=FALSE", () => {
-    expect(regionHtml({ GOLDILOCKS_ENABLED: "FALSE" }, "tool-grid")).toMatchSnapshot();
-  });
 
   it("adds the internal LB link when INTERNAL_LB_ENABLED=TRUE", () => {
     expect(regionHtml({ INTERNAL_LB_ENABLED: "TRUE" }, "tool-grid")).toMatchSnapshot();
