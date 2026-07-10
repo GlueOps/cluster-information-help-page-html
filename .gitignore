@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# PR screenshot artifacts (e2e-screenshots/screenshot-variations.sh)
+screenshots
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
