@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.30.1](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.0...v4.30.1) (2026-07-10)
+
+
+### Bug Fixes
+
+* prune obsolete Goldilocks snapshots dropped by merge resolution ([#1148](https://github.com/GlueOps/cluster-information-help-page-html/issues/1148)) ([ffb643e](https://github.com/GlueOps/cluster-information-help-page-html/commit/ffb643ed281f08ac8edfe2de33a30d6d82400001))
+* Var reduction ([#1146](https://github.com/GlueOps/cluster-information-help-page-html/issues/1146)) ([ca06604](https://github.com/GlueOps/cluster-information-help-page-html/commit/ca06604249a7e97cb30cb718b80aa7ea76d2a593))
+
+
+### Continuous Integration
+
+* add PR screenshot workflow for dashboard variations ([#1149](https://github.com/GlueOps/cluster-information-help-page-html/issues/1149)) ([ab00616](https://github.com/GlueOps/cluster-information-help-page-html/commit/ab00616345b0ca6d95b5c0b4aabf25a9550dd087))
+
 ## [4.30.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.29.0...v4.30.0) (2026-07-10)
 
 
