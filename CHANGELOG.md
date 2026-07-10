@@ -1,5 +1,22 @@
 # Changelog
 
+## [4.30.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.29.0...v4.30.0) (2026-07-10)
+
+
+### Features
+
+* create dummy commit for new release with kubeadm variable fixes ([#1144](https://github.com/GlueOps/cluster-information-help-page-html/issues/1144)) ([8ed073c](https://github.com/GlueOps/cluster-information-help-page-html/commit/8ed073cc2c9d709a6fd2dfa42c97db5190bedfda))
+
+
+### Bug Fixes
+
+* folding goldilocks card into kubeadm enabled ([#1143](https://github.com/GlueOps/cluster-information-help-page-html/issues/1143)) ([9d029e3](https://github.com/GlueOps/cluster-information-help-page-html/commit/9d029e3acbdcfacd0d07051a3bb81285e567accb))
+
+
+### Miscellaneous Chores
+
+* **main:** release 4.29.0 ([#1126](https://github.com/GlueOps/cluster-information-help-page-html/issues/1126)) ([4c87e21](https://github.com/GlueOps/cluster-information-help-page-html/commit/4c87e217d53a1ed205b1d4505e73f0f2b6238e51))
+
 ## [4.29.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.28.0...v4.29.0) (2026-07-10)
 
 
