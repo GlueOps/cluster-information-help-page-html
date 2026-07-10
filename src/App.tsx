@@ -198,7 +198,7 @@ users:
 
           {/* Main Tool Grid */}
           <div className="lg:col-span-8">
-            <div data-testid="tool-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:h-full lg:auto-rows-fr">
+            <div data-testid="tool-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tools.map((tool, i) => (
                 <Card key={i} className="bg-slate-800 border-slate-700 group hover:border-[#F4C624] transition-all duration-300 shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
