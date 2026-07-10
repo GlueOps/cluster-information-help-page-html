@@ -174,7 +174,7 @@ users:
               <CardHeader>
                 <CardTitle style={subHeaderStyle} className="text-sm uppercase tracking-widest text-[#F4C624]">Network Endpoints</CardTitle>
               </CardHeader>
-              <CardContent data-testid="network-endpoints" className="grow flex flex-col justify-between gap-4">
+              <CardContent data-testid="network-endpoints" className="grow flex flex-col justify-start gap-4">
                 {domains.map((dom, i) => (
                   <div key={i} className="group p-3 rounded-md border border-slate-700 bg-slate-900/50 hover:border-[#F4C624]/50 transition-all">
                     <p style={subHeaderStyle} className="text-xs text-slate-500 uppercase flex items-center gap-2 mb-1">
@@ -198,7 +198,7 @@ users:
 
           {/* Main Tool Grid */}
           <div className="lg:col-span-8">
-            <div data-testid="tool-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:h-full lg:auto-rows-fr">
+            <div data-testid="tool-grid" className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tools.map((tool, i) => (
                 <Card key={i} className="bg-slate-800 border-slate-700 group hover:border-[#F4C624] transition-all duration-300 shadow-xl">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
