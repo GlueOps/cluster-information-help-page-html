@@ -1,5 +1,23 @@
 # Changelog
 
+## [4.30.2](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.1...v4.30.2) (2026-07-10)
+
+
+### Bug Fixes
+
+* stop the dashboard sidebar and tool cards from stretching ([#1150](https://github.com/GlueOps/cluster-information-help-page-html/issues/1150)) ([cc2dca3](https://github.com/GlueOps/cluster-information-help-page-html/commit/cc2dca3e34491e467faf7abc7d170b3eb4fa245e))
+
+
+### Miscellaneous Chores
+
+* **main:** release 4.30.1 ([#1151](https://github.com/GlueOps/cluster-information-help-page-html/issues/1151)) ([d474a90](https://github.com/GlueOps/cluster-information-help-page-html/commit/d474a90f71da020ce4ef8d68ae7590976c47bb7c))
+* release 4.30.2 ([#1152](https://github.com/GlueOps/cluster-information-help-page-html/issues/1152)) ([9139025](https://github.com/GlueOps/cluster-information-help-page-html/commit/91390253e092bdd0cad216ba736b8222e0408137))
+
+
+### Continuous Integration
+
+* add PR screenshot workflow for dashboard variations ([#1149](https://github.com/GlueOps/cluster-information-help-page-html/issues/1149)) ([ab00616](https://github.com/GlueOps/cluster-information-help-page-html/commit/ab00616345b0ca6d95b5c0b4aabf25a9550dd087))
+
 ## [4.30.1](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.0...v4.30.1) (2026-07-10)
 
 
