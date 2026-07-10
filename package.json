@@ -1,7 +1,7 @@
 {
   "name": "cluster-information-help-page-html",
   "private": true,
-  "version": "4.28.0",
+  "version": "4.29.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
