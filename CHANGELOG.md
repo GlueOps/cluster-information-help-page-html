@@ -1,5 +1,63 @@
 # Changelog
 
+## [4.31.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.2...v4.31.0) (2026-08-08)
+
+
+### Features
+
+* update docker/build-push-action to v7.3.0 #minor ([#1185](https://github.com/GlueOps/cluster-information-help-page-html/issues/1185)) ([f500b62](https://github.com/GlueOps/cluster-information-help-page-html/commit/f500b626be09df6c8032c1574b79a1aa9c19a4f5))
+* update docker/login-action to v4.3.0 #minor ([#1188](https://github.com/GlueOps/cluster-information-help-page-html/issues/1188)) ([638d782](https://github.com/GlueOps/cluster-information-help-page-html/commit/638d7823e9f579ae876a3b48a25263576f78aba0))
+* update docker/login-action to v4.4.0 #minor ([#1192](https://github.com/GlueOps/cluster-information-help-page-html/issues/1192)) ([66c7227](https://github.com/GlueOps/cluster-information-help-page-html/commit/66c722754fbce309f7fa52413219db5541968cd0))
+* update docker/metadata-action to v6.2.0 #minor ([#1189](https://github.com/GlueOps/cluster-information-help-page-html/issues/1189)) ([6088320](https://github.com/GlueOps/cluster-information-help-page-html/commit/608832096de6d3f6d755ae2b2d256d38eeb1dd33))
+* update docker/setup-buildx-action to v4.2.0 #minor ([#1190](https://github.com/GlueOps/cluster-information-help-page-html/issues/1190)) ([07fdb4e](https://github.com/GlueOps/cluster-information-help-page-html/commit/07fdb4edf7924823efeeee5e4625f97d5ad560e7))
+* update eslint to 10.5.0 #minor ([#1157](https://github.com/GlueOps/cluster-information-help-page-html/issues/1157)) ([4e4356b](https://github.com/GlueOps/cluster-information-help-page-html/commit/4e4356b3175d18d3305043cc44e26f10bf6f773c))
+* update eslint to 10.6.0 #minor ([#1175](https://github.com/GlueOps/cluster-information-help-page-html/issues/1175)) ([dd602f0](https://github.com/GlueOps/cluster-information-help-page-html/commit/dd602f002a702ba951e63e26d57f162911f08c90))
+* update globals to 17.7.0 #minor ([#1169](https://github.com/GlueOps/cluster-information-help-page-html/issues/1169)) ([d58309d](https://github.com/GlueOps/cluster-information-help-page-html/commit/d58309d32d36c972b9f20f31e937bd4b7108f441))
+* update typescript-eslint to 8.62.0 #minor ([#1170](https://github.com/GlueOps/cluster-information-help-page-html/issues/1170)) ([3027dbe](https://github.com/GlueOps/cluster-information-help-page-html/commit/3027dbebdcae518d1eb8a9b055bc3e648c5e4f36))
+* update typescript-eslint to 8.63.0 #minor ([#1194](https://github.com/GlueOps/cluster-information-help-page-html/issues/1194)) ([0d5df90](https://github.com/GlueOps/cluster-information-help-page-html/commit/0d5df909aa3217859e4b96ba0f27394af8cdeb4f))
+* update vite to 8.1.0 #minor ([#1172](https://github.com/GlueOps/cluster-information-help-page-html/issues/1172)) ([224dec1](https://github.com/GlueOps/cluster-information-help-page-html/commit/224dec1d33c44b9780a9676029f5685876fd52a1))
+
+
+### Miscellaneous Chores
+
+* add Apache-2.0 LICENSE ([#1184](https://github.com/GlueOps/cluster-information-help-page-html/issues/1184)) ([fe1c7f6](https://github.com/GlueOps/cluster-information-help-page-html/commit/fe1c7f6d871b6687d282580fc609f7a98e8637be))
+* **fallback:** update actions/checkout ([#1168](https://github.com/GlueOps/cluster-information-help-page-html/issues/1168)) ([d46d672](https://github.com/GlueOps/cluster-information-help-page-html/commit/d46d67200b16a3db35221896bc46168a26e8a16a))
+* **fallback:** update nginx ([#1162](https://github.com/GlueOps/cluster-information-help-page-html/issues/1162)) ([784362d](https://github.com/GlueOps/cluster-information-help-page-html/commit/784362db10322132df4243aeacbfaf48a223c4f2))
+* **fallback:** update node ([#1182](https://github.com/GlueOps/cluster-information-help-page-html/issues/1182)) ([2d4f63d](https://github.com/GlueOps/cluster-information-help-page-html/commit/2d4f63de6b10278f9b68c7b51764e8f2b11c6e41))
+* **fallback:** update node ([#1193](https://github.com/GlueOps/cluster-information-help-page-html/issues/1193)) ([868dcae](https://github.com/GlueOps/cluster-information-help-page-html/commit/868dcae0b19f6c70aaa121c296fa0b8e67458bb6))
+* lock file maintenance ([#1141](https://github.com/GlueOps/cluster-information-help-page-html/issues/1141)) ([deb4b62](https://github.com/GlueOps/cluster-information-help-page-html/commit/deb4b62461981c904c3a354659514c9f247c22ae))
+* lock file maintenance ([#1156](https://github.com/GlueOps/cluster-information-help-page-html/issues/1156)) ([87f730c](https://github.com/GlueOps/cluster-information-help-page-html/commit/87f730c8e22af3155500fcdb163c599917d17428))
+* lock file maintenance ([#1158](https://github.com/GlueOps/cluster-information-help-page-html/issues/1158)) ([144d0b8](https://github.com/GlueOps/cluster-information-help-page-html/commit/144d0b8f8001e672aa0525c2ffb68f9f1ca4211d))
+* lock file maintenance ([#1160](https://github.com/GlueOps/cluster-information-help-page-html/issues/1160)) ([b2a220e](https://github.com/GlueOps/cluster-information-help-page-html/commit/b2a220e22a4740c3f3e24b22d3780b9b7466bc6b))
+* lock file maintenance ([#1163](https://github.com/GlueOps/cluster-information-help-page-html/issues/1163)) ([341ac05](https://github.com/GlueOps/cluster-information-help-page-html/commit/341ac0533af2a46325c957b128248a5960678d24))
+* lock file maintenance ([#1166](https://github.com/GlueOps/cluster-information-help-page-html/issues/1166)) ([d413809](https://github.com/GlueOps/cluster-information-help-page-html/commit/d4138099ffa6ee77aecf0a5110ef5fef6ae340e2))
+* lock file maintenance ([#1167](https://github.com/GlueOps/cluster-information-help-page-html/issues/1167)) ([f89a487](https://github.com/GlueOps/cluster-information-help-page-html/commit/f89a48799975af6e07dd45d82c7eaf0472a71400))
+* lock file maintenance ([#1173](https://github.com/GlueOps/cluster-information-help-page-html/issues/1173)) ([c34f954](https://github.com/GlueOps/cluster-information-help-page-html/commit/c34f954934d788168bad73caa2895777d77fac85))
+* lock file maintenance ([#1174](https://github.com/GlueOps/cluster-information-help-page-html/issues/1174)) ([9b4d35d](https://github.com/GlueOps/cluster-information-help-page-html/commit/9b4d35dea38f0ae947a8eb3b8f77c179dc8b356d))
+* lock file maintenance ([#1176](https://github.com/GlueOps/cluster-information-help-page-html/issues/1176)) ([282b030](https://github.com/GlueOps/cluster-information-help-page-html/commit/282b0304e1dd67ec54072f8d979deba43bc5ff0d))
+* lock file maintenance ([#1178](https://github.com/GlueOps/cluster-information-help-page-html/issues/1178)) ([a88d9da](https://github.com/GlueOps/cluster-information-help-page-html/commit/a88d9da5bdcdfa63148c2c3fd8e1ad19155437f4))
+* lock file maintenance ([#1180](https://github.com/GlueOps/cluster-information-help-page-html/issues/1180)) ([8bc132e](https://github.com/GlueOps/cluster-information-help-page-html/commit/8bc132ea70fd8b6c3dab8f496da0c80fa45a85ca))
+* lock file maintenance ([#1183](https://github.com/GlueOps/cluster-information-help-page-html/issues/1183)) ([58dd15f](https://github.com/GlueOps/cluster-information-help-page-html/commit/58dd15f8254fe51af15ed4db273e91fc15b1a6f0))
+* lock file maintenance ([#1186](https://github.com/GlueOps/cluster-information-help-page-html/issues/1186)) ([37a3ef4](https://github.com/GlueOps/cluster-information-help-page-html/commit/37a3ef45ba10b564bde85fe6c935bebe43982664))
+* lock file maintenance ([#1191](https://github.com/GlueOps/cluster-information-help-page-html/issues/1191)) ([30f6e49](https://github.com/GlueOps/cluster-information-help-page-html/commit/30f6e491b51b34151242b6f41ca68096c0d9c5c0))
+* lock file maintenance ([#1196](https://github.com/GlueOps/cluster-information-help-page-html/issues/1196)) ([546e807](https://github.com/GlueOps/cluster-information-help-page-html/commit/546e807394605497ce8666db8bc562688f3abc92))
+* lock file maintenance ([#1198](https://github.com/GlueOps/cluster-information-help-page-html/issues/1198)) ([fd12b22](https://github.com/GlueOps/cluster-information-help-page-html/commit/fd12b222865310c8bb591bd8d40b7af4dda61073))
+* lock file maintenance ([#1201](https://github.com/GlueOps/cluster-information-help-page-html/issues/1201)) ([7265c0b](https://github.com/GlueOps/cluster-information-help-page-html/commit/7265c0b96d2ed1a3f21b76a5bb36e26857915489))
+* **lockfile:** update lucide-react-lockfile #patch ([#1202](https://github.com/GlueOps/cluster-information-help-page-html/issues/1202)) ([eb0816c](https://github.com/GlueOps/cluster-information-help-page-html/commit/eb0816cac42d5ff4d19e84990fd8b8ab0f811da7))
+* **patch:** update @types/node to 25.9.3 #patch ([#1154](https://github.com/GlueOps/cluster-information-help-page-html/issues/1154)) ([4ffea1b](https://github.com/GlueOps/cluster-information-help-page-html/commit/4ffea1bbad217d50e9198355c302e646cbc9fce0))
+* **patch:** update @types/node to 25.9.4 #patch ([#1165](https://github.com/GlueOps/cluster-information-help-page-html/issues/1165)) ([c298d02](https://github.com/GlueOps/cluster-information-help-page-html/commit/c298d0260aeae5dca65dcb349519ae105e6149f7))
+* **patch:** update @types/node to 25.9.5 #patch ([#1197](https://github.com/GlueOps/cluster-information-help-page-html/issues/1197)) ([1e767af](https://github.com/GlueOps/cluster-information-help-page-html/commit/1e767afad3e80d3699525e384f1a1b3d9df77057))
+* **patch:** update @vitejs/plugin-react to 6.0.3 #patch ([#1171](https://github.com/GlueOps/cluster-information-help-page-html/issues/1171)) ([6c0d48c](https://github.com/GlueOps/cluster-information-help-page-html/commit/6c0d48cd343b570553468da2e024abd421578ec4))
+* **patch:** update eslint-plugin-react-refresh to 0.5.3 #patch ([#1159](https://github.com/GlueOps/cluster-information-help-page-html/issues/1159)) ([5b5ffaa](https://github.com/GlueOps/cluster-information-help-page-html/commit/5b5ffaa8c04fcd5442159cada04bceccb724e3bf))
+* **patch:** update radix-ui to 1.6.2 #patch ([#1195](https://github.com/GlueOps/cluster-information-help-page-html/issues/1195)) ([b01f7b0](https://github.com/GlueOps/cluster-information-help-page-html/commit/b01f7b05ee08f7f7b2bee890200ca9406acc5253))
+* **patch:** update typescript-eslint to 8.61.1 #patch ([#1161](https://github.com/GlueOps/cluster-information-help-page-html/issues/1161)) ([3a0b63b](https://github.com/GlueOps/cluster-information-help-page-html/commit/3a0b63b9ea5fde5c540ab60128503f6da608aafb))
+* **patch:** update typescript-eslint to 8.62.1 #patch ([#1177](https://github.com/GlueOps/cluster-information-help-page-html/issues/1177)) ([e7abb30](https://github.com/GlueOps/cluster-information-help-page-html/commit/e7abb305ef094150deaf5be0e44ee3498b66b1a3))
+* **patch:** update vite to 8.1.1 #patch ([#1179](https://github.com/GlueOps/cluster-information-help-page-html/issues/1179)) ([e1dd3c8](https://github.com/GlueOps/cluster-information-help-page-html/commit/e1dd3c8b0e8241acdad6826b3684cc49a1a469b9))
+* **patch:** update vite to 8.1.2 #patch ([#1181](https://github.com/GlueOps/cluster-information-help-page-html/issues/1181)) ([06efb5d](https://github.com/GlueOps/cluster-information-help-page-html/commit/06efb5d15355b69a32c22605f40af475f98d1ec3))
+* **patch:** update vite to 8.1.3 #patch ([#1187](https://github.com/GlueOps/cluster-information-help-page-html/issues/1187)) ([ee5010d](https://github.com/GlueOps/cluster-information-help-page-html/commit/ee5010defcc80d6fd088cc25778d0f3a376b0c10))
+* **patch:** update vite to 8.1.4 #patch ([#1200](https://github.com/GlueOps/cluster-information-help-page-html/issues/1200)) ([f63da91](https://github.com/GlueOps/cluster-information-help-page-html/commit/f63da917a06dfcb47ead2488c4d8ed4c4be1b5ee))
+* **pin:** update jsdom to #patch ([#1142](https://github.com/GlueOps/cluster-information-help-page-html/issues/1142)) ([132e117](https://github.com/GlueOps/cluster-information-help-page-html/commit/132e117028ce3d6613eae3f3d5957b37580e5f53))
+
 ## [4.30.2](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.1...v4.30.2) (2026-07-10)
 
 
