@@ -1,5 +1,7 @@
 // Capture a screenshot of each dashboard variation and upload it to litterbox
 // (https://litterbox.catbox.moe) — an anonymous, no-auth, auto-expiring file host.
+// If a litterbox upload fails, that image falls back to uguu.se (https://uguu.se),
+// another anonymous host whose files expire after a fixed 3 hours.
 //
 // Runs inside the official Playwright container (node + chromium preinstalled),
 // so it has no dependency on the app's own node_modules. Driven entirely by env:
@@ -20,6 +22,8 @@ import { join, basename } from "node:path";
 
 const LITTERBOX_API =
   "https://litterbox.catbox.moe/resources/internals/api.php";
+const UGUU_API = "https://uguu.se/upload";
+const UGUU_TIME = "3h"; // fixed by uguu.se, not configurable
 const NAV_TIMEOUT_MS = 60_000;
 const UPLOAD_TIMEOUT_MS = 60_000;
 
@@ -77,6 +81,55 @@ async function uploadToLitterbox(filePath) {
   return body;
 }
 
+// Upload one file to uguu.se and return its public URL. uguu answers with JSON
+// ({ success, files: [{ url }] }); anything else is treated as a failure.
+async function uploadToUguu(filePath) {
+  const bytes = await readFile(filePath);
+  const form = new FormData();
+  form.append("files[]", new Blob([bytes], { type: "image/png" }), basename(filePath));
+
+  const res = await fetch(UGUU_API, {
+    method: "POST",
+    body: form,
+    signal: AbortSignal.timeout(UPLOAD_TIMEOUT_MS),
+  });
+  const body = (await res.text()).trim();
+  let url;
+  try {
+    url = JSON.parse(body)?.files?.[0]?.url;
+  } catch {
+    // not JSON — fall through to the error below
+  }
+  if (!res.ok || typeof url !== "string" || !url.startsWith("https://")) {
+    throw new Error(`uguu HTTP ${res.status}: ${body.slice(0, 200)}`);
+  }
+  return url;
+}
+
+// Name the host in an error and flatten it to one line: a network failure is just
+// "fetch failed", and an HTML error page would break the comment's inline code.
+const describe = (host, err) => {
+  const msg = String(err?.message || err).replace(/\s+/g, " ");
+  return msg.startsWith(host) ? msg : `${host}: ${msg}`;
+};
+
+// Try litterbox first, then uguu.se. Returns where the image landed and how long
+// it lives; throws with both errors if neither host accepted it.
+async function uploadImage(filePath) {
+  let litterboxErr;
+  try {
+    return { url: await uploadToLitterbox(filePath), host: "litterbox", expiry: time };
+  } catch (err) {
+    litterboxErr = describe("litterbox", err);
+    console.error(`  ! ${litterboxErr} — falling back to uguu.se`);
+  }
+  try {
+    return { url: await uploadToUguu(filePath), host: "uguu.se", expiry: UGUU_TIME };
+  } catch (err) {
+    throw new Error(`${litterboxErr} | ${describe("uguu", err)}`);
+  }
+}
+
 // Kill animations/transitions and the text caret so a shot can't catch a
 // mid-transition frame — a real source of visual-diff noise.
 const STABILIZE_CSS =
@@ -90,7 +143,7 @@ const results = [];
 try {
   for (const { name, caption, url } of targets) {
     let context = null;
-    let imageUrl = null;
+    let upload = null;
     let error = null;
     try {
       context = await browser.newContext({ viewport: { width: vw, height: vh } });
@@ -104,15 +157,15 @@ try {
 
       const file = join(outDir, `${slug(name)}.png`);
       await page.screenshot({ path: file, fullPage: true });
-      imageUrl = await uploadToLitterbox(file);
-      console.log(`  ↑ ${imageUrl}`);
+      upload = await uploadImage(file);
+      console.log(`  ↑ ${upload.url} (${upload.host})`);
     } catch (err) {
       error = String(err?.message || err);
       console.error(`  ✗ ${name}: ${error}`);
     } finally {
       if (context) await context.close();
     }
-    results.push({ name, caption, url: imageUrl, error });
+    results.push({ name, caption, upload, error });
   }
 } finally {
   await browser.close();
@@ -125,12 +178,22 @@ const lines = [
   `Rendered for \`${sha}\` · images expire in **${time}** ([litterbox](https://litterbox.catbox.moe), anonymous host).`,
   ``,
 ];
-for (const { name, caption, url, error } of results) {
+if (results.some((r) => r.upload?.host === "uguu.se")) {
+  lines.push(
+    `> ⏳ litterbox was unavailable for some images; those are on [uguu.se](https://uguu.se) and expire in **${UGUU_TIME}**.`,
+    ``,
+  );
+}
+for (const { name, caption, upload, error } of results) {
   lines.push(`#### ${name}`);
   if (caption) lines.push(`_${caption}_`);
   lines.push(``);
-  if (url) lines.push(`![${name}](${url})`);
-  else lines.push(`> ⚠️ failed: \`${error}\``);
+  if (upload) {
+    lines.push(`![${name}](${upload.url})`);
+    if (upload.host !== "litterbox") lines.push(``, `<sub>via ${upload.host} · expires in ${upload.expiry}</sub>`);
+  } else {
+    lines.push(`> ⚠️ failed: \`${error}\``);
+  }
   lines.push(``);
 }
 
@@ -139,7 +202,7 @@ console.log(`\n✔ wrote ${join(outDir, "comment.md")}`);
 
 // Exit non-zero only if EVERY variation failed — a hard problem worth surfacing.
 // Partial success still writes a useful comment and exits 0.
-if (results.every((r) => !r.url)) {
+if (results.every((r) => !r.upload)) {
   console.error("All variations failed.");
   process.exit(1);
 }

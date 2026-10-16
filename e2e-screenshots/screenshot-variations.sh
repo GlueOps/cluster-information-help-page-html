@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # Build the dashboard image, run every flag/CA variation as a container, screenshot
-# each with Playwright, and upload the PNGs to litterbox (anonymous, auto-expiring).
+# each with Playwright, and upload the PNGs to litterbox (anonymous, auto-expiring),
+# falling back to uguu.se (anonymous, 3h expiry) for any image litterbox rejects.
 # Produces ./screenshots/<name>.png and ./screenshots/comment.md (a ready-to-post
 # Markdown body with the images embedded inline).
 #
@@ -121,7 +122,7 @@ for v in "${VARIATIONS[@]}"; do
   if [ "$ready" = 1 ]; then echo "   ✓ shot-$name"; else echo "   ! shot-$name not ready after 30s (capturing anyway)"; fi
 done
 
-echo "==> Capturing screenshots + uploading to litterbox"
+echo "==> Capturing screenshots + uploading (litterbox, uguu.se fallback)"
 rm -rf "$OUT_DIR" 2>/dev/null || true   # start clean so no stale PNGs linger/ship
 mkdir -p "$OUT_DIR"
 # Mount only the script (read-only) and an output dir, so npm's node_modules lands
