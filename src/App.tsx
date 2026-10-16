@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen, Terminal, Network, KeyRound, Gauge } from 'lucide-react';
+import { ExternalLink, Copy, Shield, Activity, Box, Globe, PhoneCall, BookOpen, LifeBuoy, Terminal, Network, KeyRound, Gauge } from 'lucide-react';
 import { useEffect } from "react";
 import { toast } from 'sonner';
 
@@ -153,7 +153,7 @@ users:
           {/* Sidebar */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Card className="bg-slate-800 border-[#F4C624]/30 shadow-xl">
-              <CardContent className="pt-6">
+              <CardContent data-testid="support" className="pt-6">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-[#084218] rounded-full text-[#F4C624]">
                     <PhoneCall size={20} />
@@ -165,6 +165,10 @@ users:
                 </div>
                 <a href="https://docs.glueops.dev" style={subHeaderStyle} className="flex items-center justify-between p-4 rounded-lg bg-[#084218] text-white hover:bg-[#084218]/80 transition-colors">
                   <span className="flex items-center gap-2"><BookOpen size={18} /> Documentation</span>
+                  <ExternalLink size={14} />
+                </a>
+                <a href="https://support.glueops.dev/" style={subHeaderStyle} className="mt-3 flex items-center justify-between p-4 rounded-lg bg-[#084218] text-white hover:bg-[#084218]/80 transition-colors">
+                  <span className="flex items-center gap-2"><LifeBuoy size={18} /> Support portal</span>
                   <ExternalLink size={14} />
                 </a>
               </CardContent>

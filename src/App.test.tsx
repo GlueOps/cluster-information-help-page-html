@@ -41,6 +41,12 @@ describe("tool grid", () => {
   });
 });
 
+describe("support", () => {
+  it("links to the support portal", () => {
+    expect(regionHtml({}, "support")).toContain('href="https://support.glueops.dev/"');
+  });
+});
+
 describe("network endpoints", () => {
   it("lists the internal load balancer when INTERNAL_LB_ENABLED=TRUE", () => {
     expect(regionHtml({ INTERNAL_LB_ENABLED: "TRUE" }, "network-endpoints")).toMatchSnapshot();
