@@ -1,12 +1,13 @@
 name: PR Screenshots
 
 # Renders every dashboard variation, screenshots each, uploads the PNGs to
-# litterbox (anonymous, auto-expiring host), and posts them inline as a sticky
-# PR comment. All the heavy lifting lives in e2e-screenshots/screenshot-variations.sh,
+# litterbox (anonymous, auto-expiring host; uguu.se as a per-image fallback), and
+# posts them inline as a sticky PR comment. All the heavy lifting lives in
+# e2e-screenshots/screenshot-variations.sh,
 # which is also runnable locally with just Docker.
 #
 # This is an INFORMATIONAL check: it depends on external best-effort services
-# (litterbox + the npm registry), so the capture step is allowed to fail without
+# (litterbox, uguu.se + the npm registry), so the capture step is allowed to fail without
 # failing the PR — an outage should never block a merge. The comment/artifact steps
 # run with `if: always()` so a partial or failed run still surfaces what it can.
 #
@@ -34,8 +35,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
-      # Informational: an outage of litterbox / npm must not fail the PR check.
-      - name: Build variations, capture screenshots, upload to litterbox
+      # Informational: an outage of litterbox / uguu.se / npm must not fail the PR check.
+      - name: Build variations, capture screenshots, upload to image host
         id: capture
         continue-on-error: true
         env:
