@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.31.1](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.31.0...v4.31.1) (2026-10-24)
+
+
+### Miscellaneous Chores
+
+* **fallback:** update nginx ([#1340](https://github.com/GlueOps/cluster-information-help-page-html/issues/1340)) ([bde6133](https://github.com/GlueOps/cluster-information-help-page-html/commit/bde6133d90c5c5b4bcff83fe4e4366f4cdad1d41))
+* **fallback:** update nginx ([#1342](https://github.com/GlueOps/cluster-information-help-page-html/issues/1342)) ([990806c](https://github.com/GlueOps/cluster-information-help-page-html/commit/990806c9962994688c2bda9e873d469b9d1d2aec))
+* **fallback:** update node ([#1341](https://github.com/GlueOps/cluster-information-help-page-html/issues/1341)) ([39bba10](https://github.com/GlueOps/cluster-information-help-page-html/commit/39bba1013d8b52252b5b5f490682f5e446431619))
+* **lockfile:** update lucide-react-lockfile #patch ([#1343](https://github.com/GlueOps/cluster-information-help-page-html/issues/1343)) ([7d0e874](https://github.com/GlueOps/cluster-information-help-page-html/commit/7d0e87467e7326780bcaa25959b5aed8edb4d337))
+* **patch:** update jsdom to 30.1.1 #patch ([#1338](https://github.com/GlueOps/cluster-information-help-page-html/issues/1338)) ([8c127ce](https://github.com/GlueOps/cluster-information-help-page-html/commit/8c127ce2ae1059c9944a4452797143802486349d))
+* **patch:** update typescript-eslint to 8.70.1 #patch ([#1337](https://github.com/GlueOps/cluster-information-help-page-html/issues/1337)) ([102849b](https://github.com/GlueOps/cluster-information-help-page-html/commit/102849b9c47023bc395b6f54948cfb72c1fd9637))
+* **patch:** update vite to 8.3.1 #patch ([#1344](https://github.com/GlueOps/cluster-information-help-page-html/issues/1344)) ([6938028](https://github.com/GlueOps/cluster-information-help-page-html/commit/69380289d8cadc5f95c74b0213c8fb8c6ddb80f8))
+
 ## [4.31.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.30.2...v4.31.0) (2026-10-21)
 
 
