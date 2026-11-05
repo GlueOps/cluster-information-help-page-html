@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Runtime
-FROM nginx:alpine@sha256:9a5daf7abdc9d051d81c92e5a2553fec2747f59d1b72f75513192bdd29d3d9d7
+FROM nginx:alpine@sha256:b2f80f8f88146b0772fdcc7d92cea621aa8c2889fa8d07ed61d4884fcea53e09
 
 # Set up permissions for non-root execution
 RUN touch /var/run/nginx.pid && \
