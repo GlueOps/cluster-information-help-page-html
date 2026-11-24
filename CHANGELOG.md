@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.33.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.32.0...v4.33.0) (2026-11-23)
+
+
+### Features
+
+* **deps:** update dependency lucide-react to v1.60.0 ([#1395](https://github.com/GlueOps/cluster-information-help-page-html/issues/1395)) ([380cb25](https://github.com/GlueOps/cluster-information-help-page-html/commit/380cb25f847ed907470ec1b264575291cf290a33))
+* **deps:** update dependency lucide-react to v1.61.0 ([#1398](https://github.com/GlueOps/cluster-information-help-page-html/issues/1398)) ([ff01a22](https://github.com/GlueOps/cluster-information-help-page-html/commit/ff01a22799420d04390155982327036cf480702b))
+* **deps:** update docker/login-action action to v4.7.0 ([#1400](https://github.com/GlueOps/cluster-information-help-page-html/issues/1400)) ([4eb84d8](https://github.com/GlueOps/cluster-information-help-page-html/commit/4eb84d81af1afe348b62df0cd0aeb8cec47a4703))
+
+
+### Dependencies
+
+* update dependency vite to v8.3.5 ([#1399](https://github.com/GlueOps/cluster-information-help-page-html/issues/1399)) ([b5632db](https://github.com/GlueOps/cluster-information-help-page-html/commit/b5632db6592fb04a208b2185bd7e52baa63ec170))
+* update nginx:alpine docker digest to b50897d ([#1401](https://github.com/GlueOps/cluster-information-help-page-html/issues/1401)) ([a2d44fc](https://github.com/GlueOps/cluster-information-help-page-html/commit/a2d44fc8853e6af37875b57e0657cb17ebdf77ef))
+* update nginx:alpine docker digest to fb46585 ([#1397](https://github.com/GlueOps/cluster-information-help-page-html/issues/1397)) ([a1fd1d7](https://github.com/GlueOps/cluster-information-help-page-html/commit/a1fd1d7844e1b47a480c91a05fe1686d0f1b5dfc))
+
 ## [4.32.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.31.0...v4.32.0) (2026-11-18)
 
 
