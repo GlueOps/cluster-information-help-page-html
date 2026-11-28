@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.34.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.33.0...v4.34.0) (2026-11-28)
+
+
+### Features
+
+* **deps:** update dependency lucide-react to v1.62.0 ([#1405](https://github.com/GlueOps/cluster-information-help-page-html/issues/1405)) ([acc86b8](https://github.com/GlueOps/cluster-information-help-page-html/commit/acc86b87340424c311fc8118101e739ce454f238))
+* **deps:** update dependency lucide-react to v1.63.0 ([#1407](https://github.com/GlueOps/cluster-information-help-page-html/issues/1407)) ([38a5d68](https://github.com/GlueOps/cluster-information-help-page-html/commit/38a5d68d4fadb2e38b97672d859c4f9d50fa2404))
+* **deps:** update dependency lucide-react to v1.64.0 ([#1408](https://github.com/GlueOps/cluster-information-help-page-html/issues/1408)) ([0933d97](https://github.com/GlueOps/cluster-information-help-page-html/commit/0933d9774258c40929fb1fe072a36f869483450d))
+
+
+### Dependencies
+
+* update dependency react-router-dom to v7.18.5 ([#1406](https://github.com/GlueOps/cluster-information-help-page-html/issues/1406)) ([3daec7e](https://github.com/GlueOps/cluster-information-help-page-html/commit/3daec7e71e14b37df77f3217148388861103f01f))
+* update dependency typescript-eslint to v8.72.1 ([#1404](https://github.com/GlueOps/cluster-information-help-page-html/issues/1404)) ([a64ba83](https://github.com/GlueOps/cluster-information-help-page-html/commit/a64ba83d5b0b1477be4f35fa89bd10027da53b75))
+* update nginx:alpine docker digest to 7fc0fb4 ([#1402](https://github.com/GlueOps/cluster-information-help-page-html/issues/1402)) ([dca2da4](https://github.com/GlueOps/cluster-information-help-page-html/commit/dca2da4c5b34495ca7599dbadda1c04ca93b7623))
+
 ## [4.33.0](https://github.com/GlueOps/cluster-information-help-page-html/compare/v4.32.0...v4.33.0) (2026-11-23)
 
 
